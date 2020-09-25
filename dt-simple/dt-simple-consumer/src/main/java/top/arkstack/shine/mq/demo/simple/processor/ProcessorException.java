@@ -16,7 +16,7 @@ import top.arkstack.shine.mq.processor.BaseProcessor;
 public class ProcessorException extends BaseProcessor {
 
     @Override
-    public Object process(Object msg, Message message, Channel channel) {
+    public Object process(Object msg, Message message, Channel channel) throws Exception{
         //执行失败的任务，可以自行实现 通知人工处理 或者回调原服务A的回滚接口
         log.info("自行实现 通知人工处理 或者回调原服务A的回滚接口：" + msg);
         return null;

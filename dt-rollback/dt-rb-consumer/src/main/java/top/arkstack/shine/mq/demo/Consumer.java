@@ -27,6 +27,9 @@ public class Consumer {
     @Autowired
     private RabbitmqFactory factory;
 
+    /**
+     * 处理死信
+     */
     @Autowired
     private ProcessorException exception;
 
@@ -37,6 +40,7 @@ public class Consumer {
     @PostConstruct
     public void test() {
         //服务B 配置消费者
+        // 1、申明交换机、队列绑定关系   2、监听此队列，当监听到消息，使用processorTest进行处理
         factory.addDLX("route_config", "route_config",
                 "route_config_key", processorTest, SendTypeEnum.DISTRIBUTED);
 

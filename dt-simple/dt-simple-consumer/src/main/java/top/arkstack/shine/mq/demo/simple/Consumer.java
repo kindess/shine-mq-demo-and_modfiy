@@ -27,9 +27,15 @@ public class Consumer {
     @Autowired
     private ProcessorException exception;
 
+    /**
+     * 消费者回调，监听到消息后业务处理逻辑
+     */
     @Autowired
     private ProcessorTest processorTest;
 
+    /**
+     * 构造器 => PostConstruct => init初始化
+     */
     @PostConstruct
     public void test() {
         //服务B 配置消费者

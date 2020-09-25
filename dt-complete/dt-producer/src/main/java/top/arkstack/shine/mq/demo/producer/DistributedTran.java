@@ -38,6 +38,7 @@ public class DistributedTran {
         //设置回查id 需要唯一 （可以用数据库的id） 以防出现错误，
         Long checkBackId = SnowflakeIdGenerator.getInstance().nextNormalId();
         //prepare需要checkBackId（回查id）来查询服务A任务状态，bizId,exchangeName和routingKey是重发的必要信息
+        // checkBackId必须保证唯一性，如PK主键、非主键也可以，如系统全局唯一订单号
         coordinator.setPrepare(new PrepareMessage(checkBackId.toString(), "route_config",
                 "route_config", "route_config_key"));
 

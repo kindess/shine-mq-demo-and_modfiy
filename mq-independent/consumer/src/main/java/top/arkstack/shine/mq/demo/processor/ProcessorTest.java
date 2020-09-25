@@ -16,7 +16,7 @@ import top.arkstack.shine.mq.processor.BaseProcessor;
 public class ProcessorTest extends BaseProcessor {
 
     @Override
-    public Object process(Object msg, Message message, Channel channel) {
+    public Object process(Object msg, Message message, Channel channel) throws Exception {
         log.info("shine queue process: {}", msg);
         try {
             //如果选择了MANUAL模式 需要手动回执ack

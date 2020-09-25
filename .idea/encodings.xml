@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/dt-complete/dt-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-complete/dt-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-complete/dt-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-complete/dt-producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-rollback/dt-rb-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-rollback/dt-rb-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-rollback/dt-rb-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-rollback/dt-rb-producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-simple/dt-simple-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-simple/dt-simple-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-simple/dt-simple-producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dt-simple/dt-simple-producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-independent/consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-independent/consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-independent/producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-independent/producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-mixed/mixed/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq-mixed/mixed/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../shine-mq-ppb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../shine-mq-ppb/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

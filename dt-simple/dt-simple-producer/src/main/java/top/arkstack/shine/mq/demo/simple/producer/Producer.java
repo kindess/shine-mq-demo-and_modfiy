@@ -19,10 +19,15 @@ public class Producer {
     @Autowired
     DistributedTran distributedTran;
 
+    /**
+     * @PostConstruct和@PreDestroy，这两个注解被用来修饰 ①非静态的 ②void（）方法
+     * @throws Exception
+     */
     @PostConstruct
     public void test() throws Exception {
         //服务A 执行任务
         for (int i = 0; i < 1; i++) {
+            // 等同于service层业务
             distributedTran.transaction();
         }
     }

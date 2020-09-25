@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mq-independent/consumer/consumer.iml" filepath="$PROJECT_DIR$/mq-independent/consumer/consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-complete/dt-consumer/dt-consumer.iml" filepath="$PROJECT_DIR$/dt-complete/dt-consumer/dt-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-complete/dt-producer/dt-producer.iml" filepath="$PROJECT_DIR$/dt-complete/dt-producer/dt-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-rollback/dt-rb-consumer/dt-rb-consumer.iml" filepath="$PROJECT_DIR$/dt-rollback/dt-rb-consumer/dt-rb-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-rollback/dt-rb-producer/dt-rb-producer.iml" filepath="$PROJECT_DIR$/dt-rollback/dt-rb-producer/dt-rb-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-simple/dt-simple-consumer/dt-simple-consumer.iml" filepath="$PROJECT_DIR$/dt-simple/dt-simple-consumer/dt-simple-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dt-simple/dt-simple-producer/dt-simple-producer.iml" filepath="$PROJECT_DIR$/dt-simple/dt-simple-producer/dt-simple-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-mixed/mixed/mixed.iml" filepath="$PROJECT_DIR$/mq-mixed/mixed/mixed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mq-independent/producer/producer.iml" filepath="$PROJECT_DIR$/mq-independent/producer/producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../shine-mq-ppb/shine-mq.iml" filepath="$PROJECT_DIR$/../shine-mq-ppb/shine-mq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/shine-mq-demo.iml" filepath="$PROJECT_DIR$/.idea/shine-mq-demo.iml" />
+    </modules>
+  </component>
+</project>

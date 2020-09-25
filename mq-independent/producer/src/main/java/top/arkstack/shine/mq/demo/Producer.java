@@ -23,6 +23,7 @@ public class Producer {
         factory.add("shine-queue-1", "shine-exchange-1", "shine-1",
                 null,null);
         for (int i = 0; i < 10; i++) {
+            // 方法参数 exchangeName:msg:routingKey
             factory.getTemplate().send("shine-exchange-1", "shine-1 " + i, "shine-1");
         }
     }

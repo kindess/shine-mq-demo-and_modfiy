@@ -36,8 +36,10 @@ public class Daemon {
     @Scheduled(initialDelay = 5_000, fixedRate = 30_000)
     public void process() {
         try {
+            // 一个服务在处理时，其他服务不需要再处理。有一个服务再处理，没有必要其他服务都重复执行消息投递（虽然消费者幂等，但没有必须浪费资源重复执行）
             //处理ready消息
             redisUtil.lock("redis_lock_ready", 90_000L, () -> {
+                // 查询所有"ready"类型的消息
                 List<EventMessage> ready = coordinator.getReady();
                 if (!Objects.isNull(ready) && ready.size() > 0) {
                     ready.forEach(r -> {

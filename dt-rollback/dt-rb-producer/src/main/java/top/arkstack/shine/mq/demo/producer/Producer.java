@@ -31,7 +31,7 @@ public class Producer {
         for (int i = 0; i < 1; i++) {
             distributedTran.transaction();
         }
-        //增加对回滚队列的监听
+        //增加对回滚队列的监听（消费者执行失败时，发送回滚消息，通知生产者回滚数据。既是生产者，又作为了消费者）
         factory.add("route_config_rollback", "route_config",
                 "route_config_rollback", rollback, SendTypeEnum.ROLLBACK);
     }

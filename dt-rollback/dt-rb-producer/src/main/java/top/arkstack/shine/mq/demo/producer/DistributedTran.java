@@ -28,12 +28,16 @@ public class DistributedTran {
 
     /**
      * 服务A 的任务
+     * 1、缓存预消息
+     * 2、业务
+     * 3、注解DistributedTrans的切面将预消息发送到MQ
      * <p>
      * coordinator 可以自行实现，或者使用默认提供的
      */
     @DistributedTrans(exchange = "route_config", routeKey = "route_config_key", bizId = "route_config",
             coordinator = "redisCoordinator", rollback = "route_config_rollback")
     @Transactional(rollbackFor = Exception.class)
+    // 使用事务回滚，必须返回一个TransferBean，事务回滚
     public TransferBean transaction() {
         //设置回查id 需要唯一 （可以用数据库的id） 以防出现错误，
         Long checkBackId = SnowflakeIdGenerator.getInstance().nextNormalId();
@@ -46,7 +50,7 @@ public class DistributedTran {
                 null, false, true, true, null);
         mapper.insert(routeConfig);
         //用来模拟任务A成功，但是没有投递到mq(就是测试prepare消息的补偿)
-        //int i = 1 / 0;
+//        int i = 1 / 0;
         //需要用TransferBean包装下，checkBackId是必须的，data可以为null
         return new TransferBean(checkBackId.toString(), routeConfig.getPath());
     }

@@ -1,6 +1,7 @@
 package top.arkstack.shine.mq.demo.simple.processor;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -20,10 +21,11 @@ import java.util.Objects;
 public class ProcessorTest extends BaseProcessor {
 
     @Override
-    public Object process(Object msg, Message message, Channel channel) {
+    public Object process(Object msg, Message message, Channel channel) throws Exception{
         //执行服务B的任务  这里可以将msg转成TransferBean
         if (!Objects.isNull(msg)) {
-            TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
+//            TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
+            TransferBean bean = new ObjectMapper().readValue(msg.toString(), TransferBean.class);
             //这里就可以处理服务B的任务了
             log.info("(Simple_Route_config) Process task B : {}", bean.getData());
             log.info("(Simple_Route_config) CheckBackId : {}", bean.getCheckBackId());
