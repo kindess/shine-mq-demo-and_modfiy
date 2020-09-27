@@ -1,5 +1,6 @@
 package top.arkstack.shine.mq.demo.processor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +40,9 @@ public class ProcessorTest extends BaseProcessor {
     public Object process(Object msg, Message message, Channel channel) throws IOException {
         //执行服务B的任务  这里可以将msg转成TransferBean
         if (!Objects.isNull(msg)) {
-//                TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
-            // TODO  msg是缺少双引号的字符串，使用jackson转换成Json对象会抛异常
-            TransferBean bean = new ObjectMapper().readValue(msg.toString(), TransferBean.class);
+                TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
+            // TODO  msg是缺少双引号的字符串，使用jackson转换成Json对象会抛异常，只能使用fastJson
+//            TransferBean bean = new ObjectMapper().readValue(msg.toString(), TransferBean.class);
             //这里就可以处理服务B的任务了
             log.info("(Route_config) Process task B : {}", bean.getData());
             // checkBackId是保证消费者幂等性的关键，假设是订单主键，而当前服务是库存服务
@@ -61,11 +62,12 @@ public class ProcessorTest extends BaseProcessor {
                 null, false, true, true, null);
         mapper.insert(routeConfig);
         //模拟失败进入回滚
-        //        int i = 1 / 0;
+                int i = 1 / 0;
         //分布式事务消息默认自动回执
 
-        // 消费之后，记得要应答，队列才会移除消息，不然一直是nack状态
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        // 消费之后，记得要应答，队列才会移除消息，不然一直是nack状态.
+        // 本例中，生产者使用@DistributedTrans发送事务消息，因此此处可以不用手动应答。由MessageAdapterHandler处理，决定是否重试还是删除此消息，重新发送一条回滚消息。即使手动应答也不会受到影响
+//        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
         return null;
     }
 }

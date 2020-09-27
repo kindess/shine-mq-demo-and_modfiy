@@ -20,4 +20,4 @@ server:
 shine:
   mq:
     rabbit:
-      listener-enable: false  # 若服务单单只是消息生产者可以设为false
+      listener-enable: false  # 若服务单单只是消息生产者可以设为false，使用自定义注解@DistributedTrans必须为true才会监听回滚队列

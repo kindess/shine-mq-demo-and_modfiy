@@ -1,5 +1,6 @@
 package top.arkstack.shine.mq.demo.rollback;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,8 @@ public class RouteConfigRollback extends BaseProcessor {
     @Transactional(rollbackFor = Exception.class)
     public Object process(Object msg, Message message, Channel channel) throws Exception {
         log.info("route_config rollback :{}", msg);
-//        TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
-        TransferBean bean = new ObjectMapper().readValue(msg.toString(), TransferBean.class);
+        TransferBean bean = JSONObject.parseObject(msg.toString(), TransferBean.class);
+//        TransferBean bean = new ObjectMapper().readValue(msg.toString(), TransferBean.class);
         //rollback transaction
         // 1、生产者监听回滚队列，进行业务数据回滚
         mapper.deleteByPrimaryKey(Long.valueOf(bean.getCheckBackId()));

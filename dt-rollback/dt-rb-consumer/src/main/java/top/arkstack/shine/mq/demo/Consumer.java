@@ -42,10 +42,13 @@ public class Consumer {
         //服务B 配置消费者
         // 1、申明交换机、队列绑定关系   2、监听此队列，当监听到消息，使用processorTest进行处理
         factory.addDLX("route_config", "route_config",
-                "route_config_key", processorTest, SendTypeEnum.DISTRIBUTED);
+                "route_config_key", processorTest, SendTypeEnum.DISTRIBUTED,
+                "route_config" + MqConstant.SPLIT + MqConstant.DEAD_LETTER_EXCHANGE,
+                MqConstant.DEAD_LETTER_ROUTEKEY);
 
-        //配置死信队列 失败时候处理
-        factory.add(MqConstant.DEAD_LETTER_QUEUE, MqConstant.DEAD_LETTER_EXCHANGE,
+        //给指定死信交换机配置死信队列，并监听死信队列，失败时候处理
+        factory.add("route_config" + MqConstant.SPLIT + MqConstant.DEAD_LETTER_QUEUE,
+                "route_config" + MqConstant.SPLIT + MqConstant.DEAD_LETTER_EXCHANGE,
                 MqConstant.DEAD_LETTER_ROUTEKEY, exception, SendTypeEnum.DLX);
     }
 }

@@ -47,6 +47,7 @@ public class DistributedTran {
                 "/shine/simple/**", "spring-mq-simple", null, false, true,
                 true, null);
         mapper.insert(routeConfig);
+        // 使用DistributedTrans注解，要求必须返回一个TransferBean，TransferBean的data属性就是要发送的消息json
         return new TransferBean(checkBackId.toString(), routeConfig.getPath());
     }
 }
